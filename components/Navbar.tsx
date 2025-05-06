@@ -1,24 +1,26 @@
-import Link from 'next/link'
+'use client'
+
+import SmoothScrollLink from './SmoothScrollLink'
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/experience', label: 'Experience' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/#home', label: 'Home' },
+  { href: '/#projects', label: 'Projects' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#blog', label: 'Blog' },
+  { href: '/#contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 backdrop-blur">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between py-4">
-        <span className="font-semibold text-primary">JH</span>
-        <ul className="flex gap-6 text-sm text-gray-300">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-black/70">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between py-6 px-4">
+        <span className="text-xl font-bold text-primary">JESSE HINES</span>
+        <ul className="flex gap-8 text-base font-medium text-gray-300">
           {links.map(({ href, label }) => (
             <li key={href}>
-              <Link href={href} className="hover:text-gray-100">
+              <SmoothScrollLink href={href} className="hover:text-primary transition-colors no-underline">
                 {label}
-              </Link>
+              </SmoothScrollLink>
             </li>
           ))}
         </ul>
