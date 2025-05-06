@@ -1,13 +1,13 @@
 'use client'
 
-import { GitHub, Linkedin, Mail, Twitter } from 'lucide-react'
+import { Github, Linkedin, Mail, Twitter } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const socialLinks = [
   { 
     name: 'GitHub',
     url: 'https://github.com/jessehines',
-    icon: <GitHub size={18} />
+    icon: <Github size={18} />
   },
   { 
     name: 'LinkedIn',
