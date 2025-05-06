@@ -3,23 +3,32 @@
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
 import { experiences } from '@/content/experience'
+import { motion } from 'framer-motion'
+import { Briefcase } from 'lucide-react'
 
 export default function ExperienceClient() {
   return (
-    <section className="py-10">
-      <h1 className="mb-8 text-center text-3xl font-bold">Experience</h1>
-      <VerticalTimeline lineColor="#7e5bff">
+    <section className="py-10 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-primary/5 to-background/0 pointer-events-none"></div>
+      <VerticalTimeline lineColor="#7e5bff" className="mx-auto max-w-4xl">
         {experiences.map((exp, idx) => (
           <VerticalTimelineElement
             key={idx}
             date={exp.period}
+            dateClassName="text-gray-400"
             iconStyle={{ background: '#7e5bff', color: '#fff' }}
-            contentStyle={{ background: 'rgb(20,20,23)', color: '#fff' }}
-            contentArrowStyle={{ borderRight: '7px solid rgb(20,20,23)' }}
+            contentStyle={{ 
+              background: 'rgb(20,20,23)', 
+              color: '#fff',
+              boxShadow: '0 4px 16px rgba(126, 91, 255, 0.1)',
+              border: '1px solid rgba(126, 91, 255, 0.2)'
+            }}
+            contentArrowStyle={{ borderRight: '7px solid rgba(126, 91, 255, 0.2)' }}
+            icon={<Briefcase size={18} />}
           >
-            <h3 className="font-semibold">{exp.company}</h3>
-            <h4 className="text-sm text-gray-400">{exp.position}</h4>
-            <p className="mt-2 text-sm">{exp.description}</p>
+            <h3 className="font-semibold text-xl">{exp.company}</h3>
+            <h4 className="text-sm text-primary">{exp.position}</h4>
+            <p className="mt-3 text-sm text-gray-300">{exp.description}</p>
           </VerticalTimelineElement>
         ))}
       </VerticalTimeline>
