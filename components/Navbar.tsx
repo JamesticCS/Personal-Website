@@ -7,7 +7,6 @@ import { motion } from 'framer-motion'
 const links = [
   { href: '/#home', label: 'Home' },
   { href: '/#projects', label: 'Projects' },
-  { href: '/#skills', label: 'Skills' },
   { href: '/#experience', label: 'Experience' },
   { href: '/#blog', label: 'Blog' },
   { href: '/#contact', label: 'Contact' },
@@ -55,10 +54,11 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between py-6 px-4">
         <SmoothScrollLink href="/#home" className="no-underline">
           <motion.span 
-            whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent"
+            whileHover={{ scale: 1.02 }}
+            className="relative text-2xl font-bold tracking-tight text-white"
           >
-            JESSE HINES
+            Jesse Hines
+            <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary"></span>
           </motion.span>
         </SmoothScrollLink>
         
