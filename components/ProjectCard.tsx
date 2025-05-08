@@ -3,17 +3,18 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, Github } from 'lucide-react'
 
 type Props = {
   title: string
   description: string
   tech: string[]
   image?: string
-  link?: string
+  githubUrl?: string | null
+  liveUrl?: string | null
 }
 
-export default function ProjectCard({ title, description, tech, image, link }: Props) {
+export default function ProjectCard({ title, description, tech, image, githubUrl, liveUrl }: Props) {
   return (
     <motion.article
       whileHover={{ y: -4, scale: 1.02 }}
@@ -25,7 +26,7 @@ export default function ProjectCard({ title, description, tech, image, link }: P
             src={image}
             alt={title}
             fill
-            className="object-cover"
+            className={`object-cover ${title === 'Physicle' ? 'object-[center_20%] scale-100' : ''}`}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
@@ -37,12 +38,22 @@ export default function ProjectCard({ title, description, tech, image, link }: P
       <div className="flex flex-col gap-3 p-6">
         <div className="flex justify-between items-start">
           <h3 className="text-xl font-semibold text-gray-100">{title}</h3>
-          {link && (
-            <Link href={link} target="_blank" rel="noopener noreferrer" 
-              className="text-primary hover:text-primary/80 transition-colors p-1">
-              <ExternalLink size={18} />
-            </Link>
-          )}
+          <div className="flex gap-2">
+            {githubUrl && (
+              <Link href={githubUrl} target="_blank" rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-primary transition-colors p-1"
+                aria-label="GitHub Repository">
+                <Github size={18} />
+              </Link>
+            )}
+            {liveUrl && (
+              <Link href={liveUrl} target="_blank" rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-primary transition-colors p-1"
+                aria-label="Live Demo">
+                <ExternalLink size={18} />
+              </Link>
+            )}
+          </div>
         </div>
         
         <p className="text-sm text-gray-400 flex-1">{description}</p>
