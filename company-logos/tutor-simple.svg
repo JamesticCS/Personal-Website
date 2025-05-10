@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="95" fill="#2D9D5B" opacity="0.1"/>
+  <g fill="#2D9D5B">
+    <!-- Graduation Cap -->
+    <path d="M100 30L40 65l60 35 60-35L100 30zM160 85v30c0 5-5 10-15 15-10 5-25 10-45 10s-35-5-45-10c-10-5-15-10-15-15V85l60 35 60-35z"/>
+    <!-- Math Equation -->
+    <rect x="70" y="135" width="60" height="5"/>
+    <rect x="70" y="150" width="60" height="5"/>
+    <rect x="97.5" y="125" width="5" height="40"/>
+  </g>
+</svg>
