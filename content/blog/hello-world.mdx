@@ -1,9 +1,50 @@
 ---
-title: Hello World
-date: "2025-05-02"
-summary: First placeholder blog post.
+title: Welcome to My Blog
+date: "May 8, 2025"
+summary: An introduction to my blog and what you can expect to find here.
 ---
 
-# Hello World
+Hi!
 
-This is a blog post written in **MDX**. Replace me with your own content.
+Welcome to my blog (*blog? posts? writing? whatever you want to call it*). As you can tell from this website, I'm a much more STEM-oriented person as opposed to English, but I still do enjoy writing casually, especially on topics that interest me. You can expect topics related to Math, CS, Physics, or really just whatever I'm interested in at the time.
+
+The stack behind this website and the blog portion specifically is quite cool. It's built on Next.js and all articles are written in markdown. I use MDX to convert the markdown to React, and this also allows me to include dynamic content with React components. On top of this I use KaTeX to render math equations and Prism.js for code block syntax highlighting. So here's a little demo that uses all of these features:
+
+```python
+def calculate_fibonacci(n):
+    """Calculate the nth Fibonacci number using dynamic programming."""
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    
+    # Initialize the first two numbers
+    fib = [0, 1] 
+    
+    # Calculate the rest using bottom-up approach
+    for i in range(2, n + 1):
+        fib.append(fib[i-1] + fib[i-2])
+    
+    return fib[n]
+
+# Example usage
+result = calculate_fibonacci(10)
+print(f"The 10th Fibonacci number is: {result}")  # Output: 55
+```
+
+I can also write mathematical equations using KaTeX. Here are Maxwell's equations:
+
+$$\begin{aligned}
+\nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
+\nabla \times \vec{B} &= \mu_0 \vec{J} + \mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t} \\
+\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
+\nabla \cdot \vec{B} &= 0
+\end{aligned}$$
+
+You can even use inline math like $E = mc^2$ within paragraphs of text!
+
+Since MDX allows React components, I could even add interactive visualizations or demos in the future!
+
+---
+
+Lastly, these posts are purely for fun, and I don't expect many people to actually read them. But if you do ever want to talk about one of these posts or have any questions, feel free to contact me at jesse.hines@uwaterloo.ca.
