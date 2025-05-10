@@ -2,8 +2,8 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import matter from 'gray-matter'
-import PrismSetup from './PrismSetup'
-import MathRenderer from './MathRenderer'
+import PrismSetup from './PrismSetup.tsx'
+import MathRenderer from './MathRenderer.tsx'
 
 type Props = { params: { slug: string } }
 
