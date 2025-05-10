@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#2D9D5B">
+  <circle cx="256" cy="256" r="240" fill="#2D9D5B" opacity="0.1"/>
+  <g transform="scale(0.8) translate(64, 64)">
+    <!-- Graduation Cap -->
+    <path d="M256 32l-192 96 192 96 192-96-192-96zm0 224c-63 0-114-28-192-64v64c0 53 114 96 192 96s192-43 192-96v-64c-78 36-129 64-192 64z" fill="#2D9D5B"/>
+    <!-- Math Symbols -->
+    <g transform="translate(40, 300)" fill="#2D9D5B">
+      <!-- Pi symbol -->
+      <path d="M84 0H0v20h24v100h20V20h36v100h20V20h24V0H84z" transform="scale(0.35)"/>
+      <!-- + symbol -->
+      <path d="M97 37h-37V0H37v37H0v24h37v37h23V61h37V37z" transform="scale(0.35) translate(150, 0)"/>
+      <!-- = symbol -->
+      <path d="M124 46H0v22h124V46zm0 45H0v22h124V91z" transform="scale(0.35) translate(300, 0)"/>
+    </g>
+  </g>
+</svg>

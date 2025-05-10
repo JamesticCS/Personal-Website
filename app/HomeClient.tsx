@@ -49,8 +49,12 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
   const [sent, setSent] = useState(false)
 
   const onSubmit = async (data: FormData) => {
-    await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
-    setSent(true)
+    try {
+      await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
+      setSent(true)
+    } catch (error) {
+      console.error('Error submitting form:', error)
+    }
   }
 
   return (
@@ -135,15 +139,17 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
           >
             <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-purple-500/20 p-1">
               <div className="w-full h-full rounded-full bg-surface flex items-center justify-center overflow-hidden">
-                {/* Replace with your actual photo when available */}
+                {/* Emoji placeholder - uncomment to use instead of photo
                 <div className="text-7xl">👨‍💻</div>
-                {/* <Image 
-                  src="/profile.jpg" 
+                */}
+                <Image 
+                  src="/profile/profile.png" 
                   alt="Jesse Hines" 
                   width={300} 
                   height={300} 
-                  className="rounded-full object-cover"
-                /> */}
+                  className="rounded-full object-cover w-full h-full transform scale-[1.15]"
+                  style={{ objectPosition: "center top" }}
+                />
               </div>
             </div>
           </motion.div>
@@ -178,7 +184,7 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
             className="flex flex-col items-center"
           >
             <h1 className="text-center text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-4">Projects</h1>
-            <p className="text-center text-gray-400 max-w-2xl mx-auto mb-12">A selection of my recent work and contributions. Each project represents unique challenges I've tackled and skills I've developed.</p>
+            <p className="text-center text-gray-400 max-w-2xl mx-auto mb-12">Here are some projects I've made recently, feel free to check them out!</p>
           
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 w-full">
               {projects.map((p, index) => (
