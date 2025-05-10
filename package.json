@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "node scripts/dev.js",
     "build": "next build",
-    "build-vercel": "next build --no-lint",
+    "build-vercel": "NODE_OPTIONS=--max_old_space_size=4096 NEXT_TELEMETRY_DISABLED=1 next build",
     "start": "next start", 
     "lint": "next lint",
     "export": "next export",
-    "deploy": "next build && touch out/.nojekyll"
+    "deploy": "npm run build-vercel && touch out/.nojekyll"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.0.0",
