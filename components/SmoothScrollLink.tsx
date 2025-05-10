@@ -12,22 +12,38 @@ interface SmoothScrollLinkProps {
 export default function SmoothScrollLink({ href, children, className = '' }: SmoothScrollLinkProps) {
   const router = useRouter()
   const pathname = usePathname()
+  const isOnBlogPage = pathname === '/blog' || pathname?.startsWith('/blog/')
   
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     
-    // Check if this is a hash link or a different page
-    const isHashLink = href.includes('#')
-    const targetUrl = isHashLink ? href.split('#')[0] || '/' : href
-    const targetHash = isHashLink ? href.split('#')[1] : null
+    // Parse the hash and path from href
+    const hasHash = href.includes('#')
+    const targetHash = hasHash ? href.split('#')[1] : null
     
-    // Check if we're already on the target page
-    const currentPath = pathname || '/'
-    const isCurrentPage = targetUrl === '/' || currentPath === targetUrl
+    // If we're on a blog page and trying to navigate to a main page section
+    if (isOnBlogPage && hasHash && href.startsWith('/#')) {
+      // First navigate to the home page
+      router.push('/')
+      
+      // Then try to scroll to the section after a delay to ensure the page has loaded
+      if (targetHash) {
+        setTimeout(() => {
+          const element = document.getElementById(targetHash)
+          if (element) {
+            element.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            })
+          }
+        }, 100)
+      }
+      return
+    }
     
-    if (isCurrentPage && targetHash) {
-      // If already on the correct page, just scroll to the element
-      const element = document.getElementById(targetHash)
+    // If we're already on the home page and trying to navigate to a section
+    if (!isOnBlogPage && hasHash) {
+      const element = document.getElementById(targetHash || '')
       
       if (element) {
         // Scroll to the element with smooth behavior
@@ -36,20 +52,14 @@ export default function SmoothScrollLink({ href, children, className = '' }: Smo
           block: 'start'
         })
         
-        // Update the URL without refreshing the page
+        // Update URL without full page reload
         window.history.pushState({}, '', href)
       }
-    } else {
-      // Navigate to different page
-      if (targetHash) {
-        // If navigating to a hash on another page
-        // First navigate to the page, then scroll will be handled on load
-        router.push(href)
-      } else {
-        // Navigate to a page without hash
-        router.push(href)
-      }
+      return
     }
+    
+    // For any other navigation, use router
+    router.push(href)
   }
 
   return (
