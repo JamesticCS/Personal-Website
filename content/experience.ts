@@ -5,7 +5,7 @@ export const experiences = [
     location: 'Markham, Ontario (Remote)',
     period: 'March 2025 – April 2025',
     description: 'Led the SEO strategy team and developed comprehensive approaches to improve digital presence and search rankings. Conducted keyword research and competitive analysis.',
-    logoUrl: '/company-logos/U+ 5.png',
+    logoUrl: '/company-logos/Uplus.png',
     color: '#FF9F30',
   },
   {
