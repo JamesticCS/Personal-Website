@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import SmoothScrollLink from './SmoothScrollLink'
 import { motion } from 'framer-motion'
 
@@ -8,21 +9,33 @@ const links = [
   { href: '/#home', label: 'Home' },
   { href: '/#projects', label: 'Projects' },
   { href: '/#experience', label: 'Experience' },
-  { href: '/#blog', label: 'Blog' },
+  { href: '/blog', label: 'Blog' },
   { href: '/#contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const pathname = usePathname()
   
   useEffect(() => {
+    // Set active section based on current path
+    if (pathname === '/blog' || pathname?.startsWith('/blog/')) {
+      setActiveSection('blog')
+      return
+    }
+    
     const handleScroll = () => {
       // Change navbar background on scroll
       setScrolled(window.scrollY > 20)
       
-      // Update active section based on scroll position
-      const sections = links.map(link => link.href.replace('/#', ''))
+      // Only update active section based on scroll if we're on the homepage
+      if (pathname !== '/') return
+      
+      // Get sections that are on the homepage
+      const sections = links
+        .filter(link => link.href.startsWith('/#'))
+        .map(link => link.href.replace('/#', ''))
       
       for (const section of sections.reverse()) {
         const element = document.getElementById(section)
@@ -37,8 +50,10 @@ export default function Navbar() {
     }
     
     window.addEventListener('scroll', handleScroll)
+    handleScroll() // Initial check
+    
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [pathname])
   
   return (
     <motion.header 
@@ -64,7 +79,13 @@ export default function Navbar() {
         
         <ul className="flex gap-4 md:gap-8 text-sm md:text-base font-medium text-gray-300">
           {links.map(({ href, label }) => {
-            const isActive = activeSection === href.replace('/#', '')
+            // Determine if this link is active
+            const linkSection = href.includes('#') 
+              ? href.replace('/#', '') 
+              : href.replace('/', '')
+            
+            const isActive = linkSection === activeSection ||
+              (linkSection === 'blog' && pathname?.startsWith('/blog'))
             
             return (
               <li key={href}>
