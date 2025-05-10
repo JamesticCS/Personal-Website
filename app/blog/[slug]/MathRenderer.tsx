@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import katex from 'katex'
+import 'katex/dist/katex.min.css'
 
 export default function MathRenderer() {
   const renderedRef = useRef(false)
@@ -12,39 +13,94 @@ export default function MathRenderer() {
 
     // Function to render all math on the page
     const renderMath = () => {
-      // Find all elements with class 'math-display'
-      const mathElements = document.querySelectorAll('.math-display')
+      // Handle block equations - look for all $$...$$ patterns
+      const blockMathElements = document.querySelectorAll('p, pre')
       
-      mathElements.forEach(element => {
-        try {
-          const tex = element.textContent || ''
-          katex.render(tex, element, {
-            displayMode: true,
-            throwOnError: false
-          })
-        } catch (error) {
-          console.error('Error rendering KaTeX:', error)
+      blockMathElements.forEach(element => {
+        if (element.textContent?.trim().startsWith('$$') && element.textContent?.trim().endsWith('$$')) {
+          try {
+            const tex = element.textContent.trim().slice(2, -2)
+            const mathDiv = document.createElement('div')
+            mathDiv.className = 'math-block my-6'
+            katex.render(tex, mathDiv, {
+              displayMode: true,
+              throwOnError: false
+            })
+            element.parentNode?.replaceChild(mathDiv, element)
+          } catch (error) {
+            console.error('Error rendering block KaTeX:', error)
+          }
         }
       })
 
-      // Find all inline math elements
-      const inlineMathElements = document.querySelectorAll('.math-inline')
+      // Handle inline equations - look for all $...$ patterns in text
+      const textNodes = getTextNodesIn(document.body)
       
-      inlineMathElements.forEach(element => {
-        try {
-          const tex = element.textContent || ''
-          katex.render(tex, element, {
-            displayMode: false,
-            throwOnError: false
-          })
-        } catch (error) {
-          console.error('Error rendering inline KaTeX:', error)
+      textNodes.forEach(node => {
+        const text = node.textContent || ''
+        if (text.includes('$') && !text.includes('$$')) {
+          const parts = text.split(/(\$[^$]+\$)/)
+          if (parts.length > 1) {
+            const fragment = document.createDocumentFragment()
+            
+            parts.forEach(part => {
+              if (part.startsWith('$') && part.endsWith('$') && part.length > 2) {
+                try {
+                  const tex = part.slice(1, -1)
+                  const span = document.createElement('span')
+                  span.className = 'math-inline'
+                  katex.render(tex, span, {
+                    displayMode: false,
+                    throwOnError: false
+                  })
+                  fragment.appendChild(span)
+                } catch (error) {
+                  const textNode = document.createTextNode(part)
+                  fragment.appendChild(textNode)
+                }
+              } else if (part) {
+                const textNode = document.createTextNode(part)
+                fragment.appendChild(textNode)
+              }
+            })
+            
+            if (node.parentNode) {
+              node.parentNode.replaceChild(fragment, node)
+            }
+          }
         }
       })
     }
 
-    // Execute after a short delay to ensure DOM is ready
-    setTimeout(renderMath, 100)
+    // Helper function to get all text nodes
+    function getTextNodesIn(el: Node): Text[] {
+      const textNodes: Text[] = []
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null)
+      
+      let node: Node | null
+      while (node = walker.nextNode()) {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim() && !isInPreformattedElement(node)) {
+          textNodes.push(node as Text)
+        }
+      }
+      
+      return textNodes
+    }
+    
+    // Check if node is inside a code block or other preformatted element
+    function isInPreformattedElement(node: Node): boolean {
+      let parent = node.parentElement
+      while (parent) {
+        if (parent.tagName === 'PRE' || parent.tagName === 'CODE') {
+          return true
+        }
+        parent = parent.parentElement
+      }
+      return false
+    }
+
+    // Execute after a delay to ensure DOM is ready
+    setTimeout(renderMath, 300)
   }, [])
 
   return null

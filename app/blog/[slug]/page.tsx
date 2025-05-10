@@ -71,7 +71,7 @@ export default async function BlogPostPage({ params }: Props) {
         <PrismSetup />
         <MathRenderer />
         <div className="mb-10">
-          <h1 className="text-4xl font-bold text-white bg-gradient-to-r from-primary/20 to-primary/5 p-4 rounded-lg">{data.title}</h1>
+          <h1 className="text-4xl font-bold text-white">{data.title}</h1>
           <p className="text-gray-400 text-sm mt-2">{data.date}</p>
         </div>
         <article className="prose prose-invert max-w-none">
