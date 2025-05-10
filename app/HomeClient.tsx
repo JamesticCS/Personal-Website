@@ -60,15 +60,15 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
   return (
     <div>
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex flex-col items-center justify-center gap-10 py-20">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-5xl mx-auto px-4">
+      <section id="home" className="min-h-screen flex flex-col items-center justify-center gap-6 md:gap-10 py-10 md:py-20">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 w-full max-w-5xl mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex-1 text-center md:text-left"
+            className="flex-1 text-center md:text-left order-2 md:order-1"
           >
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 md:mb-6">
               <motion.span 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -82,7 +82,7 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              className="text-xl text-gray-300 mb-6"
+              className="text-lg sm:text-xl text-gray-300 mb-4 md:mb-6"
             >
               Mathematics student at the University of Waterloo
             </motion.p>
@@ -90,7 +90,7 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="text-lg text-gray-400"
+              className="text-base sm:text-lg text-gray-400"
             >
               Software developer with a focus on mathematics and problem-solving.
             </motion.p>
@@ -99,7 +99,7 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="flex items-center gap-4 mt-6 md:justify-start justify-center"
+              className="flex items-center gap-4 mt-6 justify-center md:justify-start"
             >
               <a 
                 href="https://github.com/JamesticCS" 
@@ -135,13 +135,10 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="relative w-64 h-64 md:w-80 md:h-80"
+            className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-80 md:h-80 order-1 md:order-2 mb-4 md:mb-0"
           >
             <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-purple-500/20 p-1">
               <div className="w-full h-full rounded-full bg-surface flex items-center justify-center overflow-hidden">
-                {/* Emoji placeholder - uncomment to use instead of photo
-                <div className="text-7xl">👨‍💻</div>
-                */}
                 <Image 
                   src="/profile/profile.png" 
                   alt="Jesse Hines" 
@@ -149,6 +146,7 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
                   height={300} 
                   className="rounded-full object-cover w-full h-full transform scale-[1.15]"
                   style={{ objectPosition: "center top" }}
+                  priority
                 />
               </div>
             </div>
@@ -159,13 +157,13 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.8 }}
-          className="flex flex-wrap justify-center gap-3 mt-4"
+          className="flex flex-wrap justify-center gap-2 md:gap-3 mt-2 md:mt-4 px-2"
         >
-          {['TypeScript', 'React', 'Next.js', 'Node.js', 'Python', 'Machine Learning'].map((tech) => (
+          {['TypeScript', 'React', 'Next.js', 'Node.js', 'Python', 'ML'].map((tech) => (
             <motion.span 
               key={tech}
               whileHover={{ scale: 1.05, y: -3 }}
-              className="px-3 py-1 bg-surface/80 rounded-full text-sm text-gray-300 border border-primary/30"
+              className="px-2 md:px-3 py-1 bg-surface/80 rounded-full text-xs md:text-sm text-gray-300 border border-primary/30"
             >
               {tech}
             </motion.span>
@@ -174,7 +172,7 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20">
+      <section id="projects" className="py-12 md:py-20">
         <div className="mx-auto max-w-6xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -183,10 +181,10 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
             viewport={{ once: true, margin: "-100px" }}
             className="flex flex-col items-center"
           >
-            <h1 className="text-center text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-4">Projects</h1>
-            <p className="text-center text-gray-400 max-w-2xl mx-auto mb-12">Here are some projects I've made recently, feel free to check them out!</p>
+            <h1 className="text-center text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-3 md:mb-4">Projects</h1>
+            <p className="text-center text-gray-400 text-sm md:text-base max-w-2xl mx-auto mb-8 md:mb-12">Here are some projects I've made recently, feel free to check them out!</p>
           
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 w-full">
+            <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 w-full">
               {projects.map((p, index) => (
                 <motion.div
                   key={p.title}

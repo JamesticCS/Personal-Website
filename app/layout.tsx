@@ -18,6 +18,12 @@ export const metadata = {
   authors: [{ name: 'Jesse Hines' }],
   creator: 'Jesse Hines',
   publisher: 'Jesse Hines',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

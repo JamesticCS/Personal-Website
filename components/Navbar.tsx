@@ -64,7 +64,7 @@ export default function Navbar() {
           : 'bg-transparent'
       } transition-all duration-300`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between py-6 px-4">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between py-4 md:py-6 px-3 md:px-4">
         <SmoothScrollLink href="/#home" className="no-underline">
           <motion.span 
             whileHover={{ scale: 1.02 }}
@@ -75,7 +75,7 @@ export default function Navbar() {
           </motion.span>
         </SmoothScrollLink>
         
-        <ul className="flex gap-4 md:gap-8 text-sm md:text-base font-medium text-gray-300">
+        <ul className="flex flex-wrap gap-2 md:gap-8 text-xs md:text-base font-medium text-gray-300">
           {links.map(({ href, label }) => {
             const isActive = activeSection === href.replace('/#', '')
             
@@ -83,7 +83,7 @@ export default function Navbar() {
               <li key={href}>
                 <SmoothScrollLink 
                   href={href} 
-                  className={`hover:text-primary transition-colors no-underline px-2 py-1 relative ${
+                  className={`hover:text-primary transition-colors no-underline px-1.5 md:px-2 py-1 relative ${
                     isActive ? 'text-primary' : 'text-gray-300'
                   }`}
                 >
