@@ -17,6 +17,7 @@
     "jsx": "preserve",
     "strict": false,
     "noImplicitAny": false,
+    "noErrorTruncation": true, 
     "forceConsistentCasingInFileNames": true,
     "paths": {
       "@/*": [

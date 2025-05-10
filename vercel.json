@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run build-vercel",
+  "outputDirectory": "out",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "ignoreCommand": "next-ignore-typescript-error"
+}

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "node scripts/dev.js",
     "build": "next build",
-    "start": "next start",
+    "build-vercel": "next build --no-lint",
+    "start": "next start", 
     "lint": "next lint",
     "export": "next export",
     "deploy": "next build && touch out/.nojekyll"

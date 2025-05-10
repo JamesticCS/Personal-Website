@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 import rateLimit from '@/lib/rate-limit'
+import { sendEmail } from '@/lib/email'
 import { z } from 'zod'
 
 // Contact form validation schema
@@ -47,7 +48,7 @@ export async function POST(req: Request) {
     const validationResult = contactSchema.safeParse(body)
     if (!validationResult.success) {
       return NextResponse.json(
-        { error: 'Invalid form data', details: validationResult.error.format() },
+        { error: 'Invalid form data' },
         { status: 400 }
       )
     }
@@ -55,8 +56,19 @@ export async function POST(req: Request) {
     // Validated data
     const { name, email, message } = validationResult.data
     
-    // In production you would send an email here.
-    console.log('Contact form submission', { name, email, message })
+    // Send the email
+    const { success, error } = await sendEmail({ name, email, message })
+    
+    if (!success) {
+      // If email sending fails, return a 500 error
+      return NextResponse.json(
+        { 
+          error: 'Failed to send email. Please try again later.',
+          details: error
+        },
+        { status: 500 }
+      )
+    }
     
     // Return success
     return NextResponse.json({ ok: true })
