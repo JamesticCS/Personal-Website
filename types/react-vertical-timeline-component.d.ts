@@ -1,14 +1,15 @@
 declare module 'react-vertical-timeline-component' {
   import * as React from 'react';
 
-  export interface VerticalTimelineProps {
+  export interface VerticalTimelineProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     layout?: '1-column' | '2-columns';
     lineColor?: string;
     animate?: boolean;
+    children?: React.ReactNode;
   }
 
-  export interface VerticalTimelineElementProps {
+  export interface VerticalTimelineElementProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     contentStyle?: React.CSSProperties;
     contentArrowStyle?: React.CSSProperties;
@@ -24,8 +25,9 @@ declare module 'react-vertical-timeline-component' {
     textClassName?: string;
     intersectionObserverProps?: any;
     visible?: boolean;
+    children?: React.ReactNode;
   }
 
-  export const VerticalTimeline: React.FC<VerticalTimelineProps>;
-  export const VerticalTimelineElement: React.FC<VerticalTimelineElementProps>;
+  export const VerticalTimeline: React.ComponentType<VerticalTimelineProps>;
+  export const VerticalTimelineElement: React.ComponentType<VerticalTimelineElementProps>;
 }
