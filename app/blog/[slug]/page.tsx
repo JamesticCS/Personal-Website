@@ -1,4 +1,4 @@
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import { compile } from 'next-mdx-remote/rsc'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import matter from 'gray-matter'
@@ -75,7 +75,12 @@ export default async function BlogPostPage({ params }: Props) {
           <p className="text-gray-400 text-sm mt-2">{data.date}</p>
         </div>
         <article className="prose prose-invert max-w-none">
-          <MDXRemote source={content} components={components} />
+          {await compile(content, { 
+            options: { 
+              parseFrontmatter: false
+            },
+            components 
+          })}
         </article>
       </div>
     )

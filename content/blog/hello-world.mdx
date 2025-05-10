@@ -34,15 +34,23 @@ print(f"The 10th Fibonacci number is: {result}")  # Output: 55
 
 I can also write mathematical equations using KaTeX. Here are Maxwell's equations:
 
-$$\nabla \cdot E = \frac{\rho}{\varepsilon_0}$$
+<div className="math-display">
+\nabla \cdot E = \frac{\rho}{\varepsilon_0}
+</div>
 
-$$\nabla \cdot B = 0$$
+<div className="math-display">
+\nabla \cdot B = 0
+</div>
 
-$$\nabla \times E = -\frac{\partial B}{\partial t}$$
+<div className="math-display">
+\nabla \times E = -\frac{\partial B}{\partial t}
+</div>
 
-$$\nabla \times B = \mu_0 J + \mu_0 \varepsilon_0 \frac{\partial E}{\partial t}$$
+<div className="math-display">
+\nabla \times B = \mu_0 J + \mu_0 \varepsilon_0 \frac{\partial E}{\partial t}
+</div>
 
-You can even use inline math like $E = mc^2$ within paragraphs of text!
+You can even use inline math like <span className="math-inline">E = mc^2</span> within paragraphs of text!
 
 Since MDX allows React components, I could even add interactive visualizations or demos in the future!
 
