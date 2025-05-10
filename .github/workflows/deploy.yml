@@ -27,6 +27,8 @@ jobs:
 
       - name: Build
         run: npm run build-vercel
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
 
       - name: Add .nojekyll file
         run: touch out/.nojekyll

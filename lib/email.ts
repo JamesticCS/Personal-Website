@@ -2,7 +2,10 @@ import { Resend } from 'resend';
 
 // Initialize Resend with API key
 // In production, you'll need to set the RESEND_API_KEY environment variable
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY 
+  ? new Resend(process.env.RESEND_API_KEY)
+  // For build-time only: mock implementation that doesn't throw errors
+  : { emails: { send: async () => ({ data: null, error: new Error('API key not configured') }) } } as any;
 
 type EmailPayload = {
   name: string;
