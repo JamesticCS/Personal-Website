@@ -1,0 +1,37 @@
+/* Math display styles */
+.math-display {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+}
+
+.math-inline {
+  display: inline-block;
+  margin: 0 0.1em;
+}
+
+/* KaTeX specific styles */
+.katex {
+  font-size: 1.1em;
+}
+
+.katex-display {
+  margin: 2rem 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0;
+}
+
+.katex-display > .katex {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.katex-error {
+  color: red;
+}

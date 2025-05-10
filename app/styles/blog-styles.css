@@ -1,0 +1,111 @@
+/* Blog post styling */
+
+/* Typography and spacing */
+.blog-content p {
+  margin: 1.5rem 0;
+  line-height: 1.7;
+  color: #e2e8f0;
+}
+
+.blog-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1.5rem;
+  color: #fff;
+}
+
+.blog-content h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.blog-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 1.5rem 0 1rem;
+  color: #fff;
+}
+
+.blog-content a {
+  color: #7e5bff;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.blog-content a:hover {
+  color: #9d82ff;
+}
+
+.blog-content em {
+  font-style: italic;
+  color: #cbd5e0;
+}
+
+.blog-content strong {
+  font-weight: 700;
+  color: #fff;
+}
+
+.blog-content hr {
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
+
+.blog-content ul, .blog-content ol {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.blog-content ul {
+  list-style-type: disc;
+}
+
+.blog-content ol {
+  list-style-type: decimal;
+}
+
+.blog-content li {
+  margin: 0.5rem 0;
+  color: #e2e8f0;
+}
+
+/* Blog post title */
+.blog-title {
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.blog-date {
+  font-size: 0.875rem;
+  color: #a0aec0;
+  margin-bottom: 2rem;
+}
+
+/* Code blocks */
+.blog-content pre {
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Math blocks */
+.math-block {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 2rem 0;
+  padding: 1rem 0;
+}
+
+.math-inline {
+  display: inline-block;
+  margin: 0 0.2em;
+}

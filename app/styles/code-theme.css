@@ -1,0 +1,71 @@
+/* Code Block Styling */
+.code-block {
+  margin: 2rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  width: 100%;
+}
+
+/* Code styling */
+pre {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  background-color: #1e1e1e;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 0 0 8px 8px;
+}
+
+pre code {
+  display: block;
+  color: #e6edf3;
+  padding: 0;
+  background: transparent;
+  font-family: inherit;
+}
+
+code {
+  color: #e6edf3;
+}
+
+/* Python syntax highlighting */
+code .comment {
+  color: #6a9955;
+}
+
+code .string {
+  color: #ce9178;
+}
+
+code .keyword {
+  color: #569cd6;
+}
+
+code .function {
+  color: #dcdcaa;
+}
+
+code .number {
+  color: #b5cea8;
+}
+
+code .operator {
+  color: #d4d4d4;
+}
+
+code .docstring {
+  color: #6a9955;
+}
+
+/* Inline code */
+:not(pre) > code {
+  background-color: rgba(110, 118, 129, 0.4);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
