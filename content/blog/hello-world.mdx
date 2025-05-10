@@ -8,7 +8,7 @@ Hi!
 
 Welcome to my blog (*blog? posts? writing? whatever you want to call it*). As you can tell from this website, I'm a much more STEM-oriented person as opposed to English, but I still do enjoy writing casually, especially on topics that interest me. You can expect topics related to Math, CS, Physics, or really just whatever I'm interested in at the time.
 
-The stack behind this website and the blog portion specifically is quite cool. It's built on Next.js and all articles are written in markdown. I use MDX to convert the markdown to React, and this also allows me to include dynamic content with React components. On top of this I use KaTeX to render math equations and Prism.js for code block syntax highlighting. So here's a little demo that uses all of these features:
+The stack behind this website and the blog portion specifically is quite cool. It's built on Next.js and all articles are written in markdown. I use MDX to convert the markdown to React, and this also allows me to include dynamic content with React components. On top of this I use Prism.js for code block syntax highlighting. So here's a little demo that uses these features:
 
 ```python
 def calculate_fibonacci(n):
@@ -32,27 +32,7 @@ result = calculate_fibonacci(10)
 print(f"The 10th Fibonacci number is: {result}")  # Output: 55
 ```
 
-I can also write mathematical equations using KaTeX. Here are Maxwell's equations:
-
-<div className="math-display">
-\nabla \cdot E = \frac{\rho}{\varepsilon_0}
-</div>
-
-<div className="math-display">
-\nabla \cdot B = 0
-</div>
-
-<div className="math-display">
-\nabla \times E = -\frac{\partial B}{\partial t}
-</div>
-
-<div className="math-display">
-\nabla \times B = \mu_0 J + \mu_0 \varepsilon_0 \frac{\partial E}{\partial t}
-</div>
-
-You can even use inline math like <span className="math-inline">E = mc^2</span> within paragraphs of text!
-
-Since MDX allows React components, I could even add interactive visualizations or demos in the future!
+I plan to add mathematical equations using KaTeX in future posts. I'll also be able to include interactive visualizations or demos using React components!
 
 ---
 
