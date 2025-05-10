@@ -3,8 +3,7 @@ const config = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   output: 'standalone', // Change from 'export' to 'standalone' for Vercel deployment
   images: {
-    unoptimized: true,
-    domains: ['localhost', 'jesse-hines.com'], // Add domains for image optimization
+    domains: ['localhost'],
   },
   trailingSlash: true,
   typescript: {
