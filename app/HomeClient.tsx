@@ -48,8 +48,15 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
   } = useForm<FormData>({ resolver: zodResolver(schema) })
   const [sent, setSent] = useState(false)
 
+  const [formError, setFormError] = useState<string | null>(null)
+
   const onSubmit = async (data: FormData) => {
+    // Clear any previous error message
+    setFormError(null)
+    
     try {
+      console.log('Sending form data:', data)
+      
       const response = await fetch('/api/contact', { 
         method: 'POST', 
         body: JSON.stringify(data),
@@ -65,11 +72,22 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
         setSent(true)
       } else {
         console.error('Form submission failed:', result)
-        alert('Sorry, there was an error sending your message. Please try again later.')
+        let errorMessage = 'Sorry, there was an error sending your message. Please try again later.'
+        
+        // Show more specific error if available
+        if (result.error) {
+          errorMessage = `Error: ${result.error}`
+          if (result.details) {
+            console.error('Detailed error:', result.details)
+            errorMessage += `. ${JSON.stringify(result.details)}`
+          }
+        }
+        
+        setFormError(errorMessage)
       }
     } catch (error) {
       console.error('Error submitting form:', error)
-      alert('Sorry, there was an error sending your message. Please try again later.')
+      setFormError('Network error occurred while sending the message. Please check your connection and try again.')
     }
   }
 
@@ -321,6 +339,12 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                  {formError && (
+                    <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                      <p className="text-sm text-red-400">{formError}</p>
+                    </div>
+                  )}
+                  
                   <div>
                     <input
                       {...register('name')}
