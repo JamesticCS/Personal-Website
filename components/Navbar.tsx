@@ -30,7 +30,17 @@ export default function Navbar() {
       // Get sections
       const sections = links.map(link => link.href.replace('/#', ''))
       
-      for (const section of sections.reverse()) {
+      // We need to check sections in reverse order (bottom to top of page)
+      // but put 'contact' at the end to ensure it has priority
+      const orderedSections = [...sections]
+      // Move 'contact' to the end if it exists in the array
+      const contactIndex = orderedSections.indexOf('contact')
+      if (contactIndex !== -1) {
+        orderedSections.splice(contactIndex, 1)
+        orderedSections.push('contact')
+      }
+      
+      for (const section of orderedSections.reverse()) {
         const element = document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()

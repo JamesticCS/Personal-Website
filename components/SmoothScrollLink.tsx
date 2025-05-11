@@ -46,11 +46,20 @@ export default function SmoothScrollLink({ href, children, className = '' }: Smo
       const element = document.getElementById(targetHash || '')
       
       if (element) {
-        // Scroll to the element with smooth behavior
-        element.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        })
+        // Special handling for contact section - scroll a bit more
+        if (targetHash === 'contact') {
+          const offset = element.offsetTop - 50; // Adjust offset for better positioning
+          window.scrollTo({
+            top: offset,
+            behavior: 'smooth'
+          });
+        } else {
+          // Scroll to the element with smooth behavior
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          })
+        }
         
         // Update URL without full page reload
         window.history.pushState({}, '', href)
