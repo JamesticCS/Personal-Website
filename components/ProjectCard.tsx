@@ -47,7 +47,10 @@ export default function ProjectCard({ title, description, tech, image, githubUrl
               </Link>
             )}
             {liveUrl && (
-              <Link href={liveUrl} target="_blank" rel="noopener noreferrer" 
+              <Link 
+                href={title === 'WatPlan' ? 'https://watplan.app' : liveUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
                 className="text-gray-400 hover:text-primary transition-colors p-1"
                 aria-label="Live Demo">
                 <ExternalLink size={16} />
