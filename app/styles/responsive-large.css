@@ -1,0 +1,79 @@
+/**
+ * Responsive styles for large screens
+ * These styles only apply to screens larger than standard desktop monitors
+ * and are designed to improve layout and readability on 1440p/4K displays
+ */
+
+/* Only apply these styles to large screens (1440px and above) */
+@media (min-width: 1440px) {
+  /* Adjust container max-widths to use more screen space */
+  .max-w-6xl {
+    max-width: 80rem !important; /* ~1280px (up from 72rem/1152px) */
+  }
+  
+  .max-w-5xl {
+    max-width: 72rem !important; /* ~1152px (up from 64rem/1024px) */
+  }
+  
+  .max-w-3xl {
+    max-width: 56rem !important; /* ~896px (up from 48rem/768px) */
+  }
+  
+  /* Slightly larger text for better readability */
+  html {
+    font-size: 17px;
+  }
+  
+  /* Better spacing for hero section */
+  #home {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* Improve contact section visibility */
+  #contact {
+    scroll-margin-top: 80px;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* Ultra-wide screens (1800px and above) */
+@media (min-width: 1800px) {
+  /* Even larger container max-widths */
+  .max-w-6xl {
+    max-width: 90rem !important; /* ~1440px */
+  }
+  
+  .max-w-5xl {
+    max-width: 80rem !important; /* ~1280px */
+  }
+  
+  .max-w-3xl {
+    max-width: 64rem !important; /* ~1024px */
+  }
+  
+  /* Slightly larger text for better readability */
+  html {
+    font-size: 18px;
+  }
+  
+  /* Enhance project grid for ultra-wide screens */
+  #projects .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2rem !important;
+  }
+}
+
+/* Force proper vertical spacing between sections
+   This ensures sections have appropriate visual separation */
+@media (min-height: 900px) {
+  section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}

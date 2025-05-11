@@ -207,7 +207,7 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
 
       {/* Projects Section */}
       <section id="projects" className="py-12 md:py-20">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-6xl px-4 lg:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -218,7 +218,7 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
             <h1 className="text-center text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-3 md:mb-4">Projects</h1>
             <p className="text-center text-gray-400 text-sm md:text-base max-w-2xl mx-auto mb-8 md:mb-12">Here are some projects I've made recently, feel free to check them out!</p>
           
-            <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 w-full">
+            <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 w-full" id="project-grid">
               {projects.map((p, index) => (
                 <motion.div
                   key={p.title}
@@ -236,8 +236,8 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20">
-        <div className="mx-auto max-w-6xl px-4 mb-12">
+      <section id="experience" className="py-16 md:py-20 lg:py-24">
+        <div className="mx-auto max-w-6xl px-4 lg:px-6 mb-12">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -261,8 +261,8 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
       </section>
 
       {/* Blog Section */}
-      <section id="blog" className="py-20">
-        <div className="mx-auto max-w-3xl px-4">
+      <section id="blog" className="py-16 md:py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl px-4 lg:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -305,10 +305,10 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 relative">
+      <section id="contact" className="py-16 md:py-20 lg:py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background pointer-events-none opacity-60" />
         
-        <div className="mx-auto max-w-xl px-4 relative z-10">
+        <div className="mx-auto max-w-xl px-4 lg:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
