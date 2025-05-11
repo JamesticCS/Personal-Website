@@ -318,83 +318,103 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
           >
             <h1 className="text-center text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-4">Get In Touch</h1>
             <p className="text-center text-gray-400 max-w-md mx-auto mb-8">
-              Have a question or want to work together? Feel free to reach out!
+              Have a question or want to work together? The best way to reach me is by email, but you can also contact me by phone.
             </p>
           
             <div className="bg-surface rounded-2xl p-8 shadow-xl border border-gray-800 w-full">
-              {sent ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-10"
-                >
-                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-400">
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-medium text-green-400 mb-2">Message Sent!</h3>
-                  <p className="text-gray-400">Thanks! I'll get back to you as soon as possible.</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                  {formError && (
-                    <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
-                      <p className="text-sm text-red-400">{formError}</p>
+              <div className="text-center py-4">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </div>
+                
+                <h3 className="text-xl font-medium text-white mb-4">Get In Touch</h3>
+                
+                <div className="flex flex-col items-center gap-5 max-w-md mx-auto">
+                  <div className="w-full">
+                    <div className="flex items-center gap-3 text-left p-4 bg-background rounded-lg border border-gray-800 hover:border-primary/40 transition-colors">
+                      <div className="text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-400 mb-1">Email</p>
+                        <a href="mailto:jesse.hines@uwaterloo.ca" className="text-primary hover:text-primary/80 transition-colors font-medium">
+                          jesse.hines@uwaterloo.ca
+                        </a>
+                      </div>
                     </div>
-                  )}
-                  
-                  <div>
-                    <input
-                      {...register('name')}
-                      placeholder="Name"
-                      className="w-full rounded-lg bg-background border border-gray-700 p-3 text-sm focus:border-primary focus:outline-none transition-colors"
-                    />
-                    {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name.message}</p>}
                   </div>
                   
-                  <div>
-                    <input
-                      {...register('email')}
-                      placeholder="Email"
-                      className="w-full rounded-lg bg-background border border-gray-700 p-3 text-sm focus:border-primary focus:outline-none transition-colors"
-                    />
-                    {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email.message}</p>}
+                  <div className="w-full">
+                    <div className="flex items-center gap-3 text-left p-4 bg-background rounded-lg border border-gray-800 hover:border-primary/40 transition-colors">
+                      <div className="text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-400 mb-1">Phone</p>
+                        <a href="tel:+19025994779" className="text-primary hover:text-primary/80 transition-colors font-medium">
+                          902-599-4779
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  
-                  <div>
-                    <textarea
-                      {...register('message')}
-                      placeholder="Your message"
-                      rows={5}
-                      className="w-full rounded-lg bg-background border border-gray-700 p-3 text-sm focus:border-primary focus:outline-none transition-colors"
-                    />
-                    {errors.message && <p className="text-xs text-red-400 mt-1">{errors.message.message}</p>}
-                  </div>
-                  
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    disabled={isSubmitting}
-                    className="w-full rounded-lg bg-gradient-to-r from-primary to-purple-500 py-3 font-medium text-white disabled:opacity-50 transition-all shadow-lg shadow-primary/20"
-                  >
-                    {isSubmitting ? 'Sending…' : 'Send Message'}
-                  </motion.button>
-                </form>
-              )}
+                </div>
+              </div>
             </div>
             
-            <div className="text-center mt-8 text-sm text-gray-400">
-              Or contact me directly at{' '}
-              <a href="mailto:jesse.hines@uwaterloo.ca" className="text-primary hover:text-primary/80 transition-colors">
-                jesse.hines@uwaterloo.ca
-              </a>{' '}
-              or call{' '}
-              <a href="tel:+19025994779" className="text-primary hover:text-primary/80 transition-colors">
-                902‑599‑4779
-              </a>
-            </div>
+            {/* Contact form code commented out for later implementation
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              {formError && (
+                <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                  <p className="text-sm text-red-400">{formError}</p>
+                </div>
+              )}
+              
+              <div>
+                <input
+                  {...register('name')}
+                  placeholder="Name"
+                  className="w-full rounded-lg bg-background border border-gray-700 p-3 text-sm focus:border-primary focus:outline-none transition-colors"
+                />
+                {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name.message}</p>}
+              </div>
+              
+              <div>
+                <input
+                  {...register('email')}
+                  placeholder="Email"
+                  className="w-full rounded-lg bg-background border border-gray-700 p-3 text-sm focus:border-primary focus:outline-none transition-colors"
+                />
+                {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email.message}</p>}
+              </div>
+              
+              <div>
+                <textarea
+                  {...register('message')}
+                  placeholder="Your message"
+                  rows={5}
+                  className="w-full rounded-lg bg-background border border-gray-700 p-3 text-sm focus:border-primary focus:outline-none transition-colors"
+                />
+                {errors.message && <p className="text-xs text-red-400 mt-1">{errors.message.message}</p>}
+              </div>
+              
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                disabled={isSubmitting}
+                className="w-full rounded-lg bg-gradient-to-r from-primary to-purple-500 py-3 font-medium text-white disabled:opacity-50 transition-all shadow-lg shadow-primary/20"
+              >
+                {isSubmitting ? 'Sending…' : 'Send Message'}
+              </motion.button>
+            </form>
+            */}
           </motion.div>
         </div>
       </section>
