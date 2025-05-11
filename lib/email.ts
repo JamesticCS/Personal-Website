@@ -23,7 +23,7 @@ export async function sendEmail({ name, email, message }: EmailPayload) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Website Contact <contact@jesse-hines.com>',
+      from: 'Website Contact <onboarding@resend.dev>',
       to: ['jesse.hines@uwaterloo.ca'],
       subject: `Website Contact: ${name}`,
       reply_to: email,
