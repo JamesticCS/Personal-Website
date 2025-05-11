@@ -1,7 +1,8 @@
+// Updated: May 10, 2025
 export const projects = [
   {
     title: 'WatPlan',
-    description: 'A comprehensive degree planning tool for University of Waterloo students that helps track academic progress, explore course options, and ensure degree requirements are met.',
+    description: 'A comprehensive degree planning tool for University of Waterloo students that helps track academic progress, explore course options, and ensure all degree requirements are met.',
     tech: ['Next.js', 'React', 'TypeScript', 'Prisma', 'PostgreSQL'],
     image: '/projects/watplan.png',
     githubUrl: 'https://github.com/JamesticCS/WatPlan',
