@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+// Last build update: May 10, 2025 - Force cache clear for WatPlan URL fix
 const config = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   output: 'standalone', // Change from 'export' to 'standalone' for Vercel deployment
