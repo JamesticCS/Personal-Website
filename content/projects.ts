@@ -5,7 +5,7 @@ export const projects = [
     tech: ['Next.js', 'React', 'TypeScript', 'Prisma', 'PostgreSQL'],
     image: '/projects/watplan.png',
     githubUrl: 'https://github.com/JamesticCS/WatPlan',
-    liveUrl: 'https://watplan.ca',
+    liveUrl: 'https://watplan.app',
   },
   {
     title: 'Physicle',
