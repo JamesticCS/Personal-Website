@@ -57,10 +57,11 @@ export async function POST(req: Request) {
     const { name, email, message } = validationResult.data
     
     // Send the email
-    const { success, error } = await sendEmail({ name, email, message })
+    const { success, error, data } = await sendEmail({ name, email, message })
     
     if (!success) {
-      // If email sending fails, return a 500 error
+      // If email sending fails, return a 500 error with details
+      console.error('Email sending failed:', error)
       return NextResponse.json(
         { 
           error: 'Failed to send email. Please try again later.',
@@ -70,8 +71,16 @@ export async function POST(req: Request) {
       )
     }
     
-    // Return success
-    return NextResponse.json({ ok: true })
+    // Return success with data for debugging
+    console.log('Email sent successfully:', data)
+    return NextResponse.json({ 
+      ok: true, 
+      debug: {
+        emailSent: true,
+        recipient: 'jesse.hines@uwaterloo.ca',
+        resendResponse: data
+      }
+    })
   } catch (error) {
     console.error('Contact form error:', error)
     return NextResponse.json(

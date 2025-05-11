@@ -18,10 +18,15 @@ export async function sendEmail({ name, email, message }: EmailPayload) {
   if (!process.env.RESEND_API_KEY) {
     console.log('Would send email in production to jesse.hines@uwaterloo.ca:');
     console.log({ name, email, message });
-    return { success: true };
+    return { success: true, data: null };
   }
 
+  // Log API key status (without revealing the actual key)
+  console.log('Resend API key set:', !!process.env.RESEND_API_KEY);
+  
   try {
+    console.log('Attempting to send email via Resend');
+    
     const { data, error } = await resend.emails.send({
       from: 'Website Contact <onboarding@resend.dev>',
       to: ['jesse.hines@uwaterloo.ca'],
@@ -43,12 +48,13 @@ export async function sendEmail({ name, email, message }: EmailPayload) {
 
     if (error) {
       console.error('Error sending email:', error);
-      return { success: false, error };
+      return { success: false, error, data: null };
     }
 
-    return { success: true, data };
+    console.log('Email sent successfully:', data);
+    return { success: true, data, error: null };
   } catch (error) {
     console.error('Failed to send email:', error);
-    return { success: false, error };
+    return { success: false, error, data: null };
   }
 }

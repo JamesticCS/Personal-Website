@@ -50,10 +50,26 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
 
   const onSubmit = async (data: FormData) => {
     try {
-      await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
-      setSent(true)
+      const response = await fetch('/api/contact', { 
+        method: 'POST', 
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      
+      const result = await response.json()
+      
+      if (response.ok) {
+        console.log('Form submission successful:', result)
+        setSent(true)
+      } else {
+        console.error('Form submission failed:', result)
+        alert('Sorry, there was an error sending your message. Please try again later.')
+      }
     } catch (error) {
       console.error('Error submitting form:', error)
+      alert('Sorry, there was an error sending your message. Please try again later.')
     }
   }
 
