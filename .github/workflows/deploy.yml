@@ -1,8 +1,10 @@
-name: Deploy to GitHub Pages
+# This workflow is disabled since we're now using Vercel instead of GitHub Pages
+name: Deploy to GitHub Pages (Disabled)
 
 on:
-  push:
-    branches: [master, main]
+  # Disable automatic triggering 
+  workflow_dispatch:
+    # Manual trigger only
 
 permissions:
   contents: write
