@@ -13,6 +13,9 @@ const links = [
   { href: '/#contact', label: 'Contact' },
 ]
 
+// Resume link separate from nav scroll links
+const resumeLink = { href: '/documents/resume.pdf', label: 'Resume', external: true }
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
@@ -109,6 +112,18 @@ export default function Navbar() {
               </li>
             )
           })}
+          
+          {/* Resume link (opens in new tab) */}
+          <li>
+            <a 
+              href={resumeLink.href} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors no-underline px-1.5 md:px-2 py-1 relative text-gray-300"
+            >
+              {resumeLink.label}
+            </a>
+          </li>
         </ul>
       </nav>
     </motion.header>
