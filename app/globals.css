@@ -2,12 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Deployment trigger - May 12, 2025 */
+
 html, body {
   @apply bg-background text-gray-200;
 }
 
 a {
   @apply text-primary hover:underline;
+}
+
+/* Code Styles */
+.language-python {
+  color: #e6edf3;
+}
+
+.language-python .comment {
+  color: #8b949e;
+}
+
+.language-python .string {
+  color: #a5d6ff;
+}
+
+.language-python .keyword {
+  color: #ff7b72;
+}
+
+.language-python .function {
+  color: #d2a8ff;
+}
+
+.language-python .operator {
+  color: #ff7b72;
+}
+
+.language-python .number {
+  color: #79c0ff;
+}
+
+/* Math (KaTeX) Styles */
+.katex-display {
+  margin: 2rem 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0;
 }
 
 /* Timeline fixes */
