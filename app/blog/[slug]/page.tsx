@@ -3,6 +3,9 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import PrismSetup from './PrismSetup'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import 'katex/dist/katex.min.css'
 
 type Props = { params: { slug: string } }
 
@@ -56,7 +59,7 @@ export async function generateStaticParams() {
   }
 }
 
-export default function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({ params }: Props) {
   const slug = params.slug
   const contentDir = path.join(process.cwd(), 'content', 'blog')
   const filePath = path.join(contentDir, `${slug}.mdx`)
@@ -78,7 +81,18 @@ export default function BlogPostPage({ params }: Props) {
           <p className="text-gray-400 text-sm mt-2">{data.date}</p>
         </div>
         <article className="prose prose-invert max-w-none">
-          <MDXRemote source={content} components={components} />
+          <MDXRemote 
+            source={content} 
+            components={components}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [remarkMath],
+                rehypePlugins: [rehypeKatex],
+                format: 'md',
+              },
+              parseFrontmatter: false
+            }}
+          />
         </article>
       </div>
     )

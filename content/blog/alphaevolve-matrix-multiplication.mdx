@@ -12,7 +12,9 @@ This immediately made me wonder: given all the brilliant mathematicians who've w
 
 Matrix multiplication is a core operation in everything from 3D graphics rendering to machine learning<sup>[2](#ref2)</sup>. The standard approach we learn in linear algebra uses the following formula:
 
-$$C_{ij} = \sum_{k=1}^{n} A_{ik} \cdot B_{kj}$$
+$$
+C_{ij} = \sum_{k=1}^{n} A_{ik} \cdot B_{kj}
+$$
 
 For 4×4 matrices, this naive approach requires 64 multiplications (4³). This becomes expensive for large matrices, which is why theoretical computer scientists have been obsessed with finding more efficient algorithms.
 
@@ -20,10 +22,14 @@ For 4×4 matrices, this naive approach requires 64 multiplications (4³). This b
 
 In 1969, Volker Strassen<sup>[3](#ref3)</sup> showed that 2×2 matrices could be multiplied using only 7 multiplications instead of 8. For two matrices:
 
-$$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}, 
-B = \begin{pmatrix} e & f \\ g & h \end{pmatrix}$$
+$$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
+
+$$
+B = \begin{pmatrix} e & f \\ g & h \end{pmatrix}
+$$
 
 The standard approach computes each element of the result with 8 multiplications:
+
 - $C_{11} = ae + bg$
 - $C_{12} = af + bh$
 - $C_{21} = ce + dg$
@@ -62,14 +68,17 @@ For 4×4 matrices, applying Strassen's algorithm recursively requires 49 multipl
 
 According to DeepMind's research, AlphaEvolve found a way to multiply 4×4 complex-valued matrices using only 48 scalar multiplications<sup>[1](#ref1)</sup>.
 
-I was skeptical at first - just one fewer multiplication? But after researching the history of matrix multiplication algorithms, I confirmed this is genuinely novel. The closest alternative was Waksman's algorithm from 1970<sup>[5](#ref5)</sup>, which uses 46 multiplications but only works for specific mathematical structures.
+I was skeptical at first - just one fewer multiplication? But after researching the history of matrix multiplication algorithms, after digging a bit, it became clear this was a genuinely novel discovery. The closest alternative was Waksman's algorithm from 1970<sup>[5](#ref5)</sup>, which uses 46 multiplications but only works for specific mathematical structures.
 
 ## The Mathematical Details
 
 When we apply Strassen's algorithm to 4×4 matrices, we first view them as 2×2 block matrices:
 
-$$A = \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix}, 
-B = \begin{pmatrix} B_{11} & B_{12} \\ B_{21} & B_{22} \end{pmatrix}$$
+$$A = \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix}$$
+
+$$
+B = \begin{pmatrix} B_{11} & B_{12} \\ B_{21} & B_{22} \end{pmatrix}
+$$
 
 Each block is itself a 2×2 matrix. We compute 7 products:
 
