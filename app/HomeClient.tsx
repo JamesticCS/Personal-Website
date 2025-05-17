@@ -193,7 +193,7 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
           transition={{ delay: 1.5, duration: 0.8 }}
           className="flex flex-wrap justify-center gap-2 md:gap-3 mt-2 md:mt-4 px-2"
         >
-          {['TypeScript', 'React', 'Next.js', 'Node.js', 'Python', 'ML'].map((tech) => (
+          {['Python', 'C++', 'TypeScript', 'React', 'Next.js', 'Node.js', 'ML'].map((tech) => (
             <motion.span 
               key={tech}
               whileHover={{ scale: 1.05, y: -3 }}
