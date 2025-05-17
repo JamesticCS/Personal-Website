@@ -10,9 +10,7 @@ This immediately made me wonder: given all the brilliant mathematicians who've w
 
 ## Matrix Multiplication Fundamentals
 
-Matrix multiplication is a core operation in everything from 3D graphics rendering to machine learning<sup>[2](#ref2)</sup>. The standard approach we learn in linear algebra uses the following formula:
-
-$$C = \sum_{k=1}^{n} A_{i,k} \cdot B_{k,j}$$
+Matrix multiplication is a core operation in everything from 3D graphics rendering to machine learning<sup>[2](#ref2)</sup>. The standard approach we learn in linear algebra uses nested loops to multiply corresponding elements.
 
 For 4×4 matrices, this naive approach requires 64 multiplications (4³). This becomes expensive for large matrices, which is why theoretical computer scientists have been obsessed with finding more efficient algorithms.
 
