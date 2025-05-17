@@ -1,0 +1,150 @@
+---
+title: "AlphaEvolve vs. the 4×4 Matrix: Breaking a 56-Year Record"
+date: "May 16, 2025"
+summary: "Examining Google DeepMind's new algorithm for 4×4 matrix multiplication and whether it's mathematically significant."
+---
+
+Last week, Google DeepMind published a paper in Nature<sup>[1](#ref1)</sup> about their new AI system AlphaEvolve - and buried in the technical details was something that caught my eye: they claimed to have found a more efficient algorithm for multiplying 4×4 matrices that improves on the previous best method from 1969. 
+
+This immediately made me wonder: given all the brilliant mathematicians who've worked on this problem, is this actually new? And does it even matter? I spent a few hours digging into the research, and thought the results were interesting enough to share.
+
+## Matrix Multiplication Fundamentals
+
+Matrix multiplication is a core operation in everything from 3D graphics rendering to machine learning<sup>[2](#ref2)</sup>. The standard approach we learn in linear algebra uses the following formula:
+
+$$C_{ij} = \sum_{k=1}^{n} A_{ik} \cdot B_{kj}$$
+
+For 4×4 matrices, this naive approach requires 64 multiplications (4³). This becomes expensive for large matrices, which is why theoretical computer scientists have been obsessed with finding more efficient algorithms.
+
+## The Strassen Breakthrough
+
+In 1969, Volker Strassen<sup>[3](#ref3)</sup> showed that 2×2 matrices could be multiplied using only 7 multiplications instead of 8. For two matrices:
+
+$$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}, 
+B = \begin{pmatrix} e & f \\ g & h \end{pmatrix}$$
+
+The standard approach computes each element of the result with 8 multiplications:
+- $C_{11} = ae + bg$
+- $C_{12} = af + bh$
+- $C_{21} = ce + dg$
+- $C_{22} = cf + dh$
+
+Strassen's insight was to compute these intermediate products:
+
+$$
+\begin{align}
+P_1 &= a(f-h) \\
+P_2 &= (a+b)h \\
+P_3 &= (c+d)e \\
+P_4 &= d(g-e) \\
+P_5 &= (a+d)(e+h) \\
+P_6 &= (b-d)(g+h) \\
+P_7 &= (a-c)(e+f)
+\end{align}
+$$
+
+And then combine them:
+
+$$
+\begin{align}
+C_{11} &= P_5 + P_4 - P_2 + P_6 \\
+C_{12} &= P_1 + P_2 \\
+C_{21} &= P_3 + P_4 \\
+C_{22} &= P_5 + P_1 - P_3 - P_7
+\end{align}
+$$
+
+This reduces the complexity from $O(n^3)$ to approximately $O(n^{2.81})$ when applied recursively to larger matrices.
+
+For 4×4 matrices, applying Strassen's algorithm recursively requires 49 multiplications. This has been the state-of-the-art for complex-valued matrices since 1969<sup>[4](#ref4)</sup>.
+
+## AlphaEvolve's Algorithm
+
+According to DeepMind's research, AlphaEvolve found a way to multiply 4×4 complex-valued matrices using only 48 scalar multiplications<sup>[1](#ref1)</sup>.
+
+I was skeptical at first - just one fewer multiplication? But after researching the history of matrix multiplication algorithms, I confirmed this is genuinely novel. The closest alternative was Waksman's algorithm from 1970<sup>[5](#ref5)</sup>, which uses 46 multiplications but only works for specific mathematical structures.
+
+## The Mathematical Details
+
+When we apply Strassen's algorithm to 4×4 matrices, we first view them as 2×2 block matrices:
+
+$$A = \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix}, 
+B = \begin{pmatrix} B_{11} & B_{12} \\ B_{21} & B_{22} \end{pmatrix}$$
+
+Each block is itself a 2×2 matrix. We compute 7 products:
+
+$$
+\begin{align}
+M_1 &= (A_{11} + A_{22})(B_{11} + B_{22}) \\
+M_2 &= (A_{21} + A_{22})B_{11} \\
+M_3 &= A_{11}(B_{12} - B_{22}) \\
+M_4 &= A_{22}(B_{21} - B_{11}) \\
+M_5 &= (A_{11} + A_{12})B_{22} \\
+M_6 &= (A_{21} - A_{11})(B_{11} + B_{12}) \\
+M_7 &= (A_{12} - A_{22})(B_{21} + B_{22})
+\end{align}
+$$
+
+Each of these requires 7 multiplications when using Strassen's algorithm recursively, for a total of $7 \times 7 = 49$.
+
+AlphaEvolve somehow found a structure that requires only 48. The paper doesn't detail the exact algorithm, but it must involve a clever restructuring that eliminates one multiplication.
+
+## Practical Significance
+
+For 4×4 matrices specifically, this theoretical improvement probably won't have much practical impact. In real-world computing, the naive algorithm often outperforms Strassen's method for small matrices due to:
+
+1. The overhead of extra addition and subtraction operations
+2. Cache behavior and memory access patterns
+3. Hardware-level parallelism opportunities
+4. Numerical stability issues
+
+Modern processors can actually execute the standard 64 multiplications for 4×4 matrices very efficiently using SIMD instructions<sup>[6](#ref6)</sup>. For matrices smaller than 100×100, the standard approach is typically faster in practice<sup>[7](#ref7)</sup>.
+
+Nevertheless, AlphaEvolve's discovery matters for several reasons:
+
+1. It demonstrates AI can make fundamental algorithmic discoveries that have eluded human researchers
+2. It raises new questions about theoretical lower bounds
+3. It might generalize to other matrix sizes
+
+## Code Implementation
+
+Here's a simplified Python implementation of standard matrix multiplication:
+
+```python
+def naive_matrix_multiply_4x4(A, B):
+    C = [[0 for _ in range(4)] for _ in range(4)]
+    
+    # This requires 64 multiplications (4³)
+    for i in range(4):
+        for j in range(4):
+            for k in range(4):
+                C[i][j] += A[i][k] * B[k][j]
+    
+    return C
+```
+
+The full implementation of Strassen's algorithm for 4×4 matrices would be much more complex, involving the recursive application of the 7-multiplication approach to each submatrix.
+
+## Conclusion
+
+Is AlphaEvolve's breakthrough significant? From a theoretical perspective, yes - improving on an algorithm that stood for 56 years is remarkable. From a practical standpoint, the impact is limited, but it represents an important milestone in AI's ability to contribute to mathematical research.
+
+The most interesting aspect isn't just this specific algorithm, but what it suggests about the future: AI systems can now explore mathematical solution spaces that humans might miss due to our cognitive biases or limited capacity to consider non-intuitive approaches.
+
+---
+
+### References
+
+<span id="ref1">[1]</span> Balog, M., et al. "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms." *Nature* 625, 468–475 (2024).
+
+<span id="ref2">[2]</span> Golub, G.H., Van Loan, C.F. *Matrix Computations*. Johns Hopkins University Press (2013).
+
+<span id="ref3">[3]</span> Strassen, V. "Gaussian elimination is not optimal." *Numerische Mathematik* 13, 354–356 (1969).
+
+<span id="ref4">[4]</span> Bläser, M. "On the complexity of the multiplication of matrices of small formats." *Journal of Complexity* 19, 43-60 (2003).
+
+<span id="ref5">[5]</span> Waksman, A. "On Winograd's algorithm for inner products." *IEEE Transactions on Computers* C-19, 360–361 (1970).
+
+<span id="ref6">[6]</span> Intel. "Intel Intrinsics Guide - SSE Matrix Multiplication." *Intel Developer Zone* (2020).
+
+<span id="ref7">[7]</span> D'Alberto, P., Nicolau, A. "Adaptive Strassen's matrix multiplication." *ACM International Conference on Supercomputing*, 284-292 (2007).
