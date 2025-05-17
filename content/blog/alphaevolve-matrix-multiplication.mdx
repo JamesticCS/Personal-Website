@@ -12,7 +12,7 @@ This immediately made me wonder: given all the brilliant mathematicians who've w
 
 Matrix multiplication is a core operation in everything from 3D graphics rendering to machine learning<sup>[2](#ref2)</sup>. The standard approach we learn in linear algebra uses the following formula:
 
-$$C_{ij} = \sum_{k=1}^{n} A_{ik} \cdot B_{kj}$$
+$$C = \sum_{k=1}^{n} A_{i,k} \cdot B_{k,j}$$
 
 For 4×4 matrices, this naive approach requires 64 multiplications (4³). This becomes expensive for large matrices, which is why theoretical computer scientists have been obsessed with finding more efficient algorithms.
 
@@ -24,10 +24,10 @@ $$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix},
 B = \begin{pmatrix} e & f \\ g & h \end{pmatrix}$$
 
 The standard approach computes each element of the result with 8 multiplications:
-- $C_{11} = ae + bg$
-- $C_{12} = af + bh$
-- $C_{21} = ce + dg$
-- $C_{22} = cf + dh$
+- $C_{1,1} = ae + bg$
+- $C_{1,2} = af + bh$
+- $C_{2,1} = ce + dg$
+- $C_{2,2} = cf + dh$
 
 Strassen's insight was to compute these intermediate products:
 
@@ -47,10 +47,10 @@ And then combine them:
 
 $$
 \begin{align}
-C_{11} &= P_5 + P_4 - P_2 + P_6 \\
-C_{12} &= P_1 + P_2 \\
-C_{21} &= P_3 + P_4 \\
-C_{22} &= P_5 + P_1 - P_3 - P_7
+C_{1,1} &= P_5 + P_4 - P_2 + P_6 \\
+C_{1,2} &= P_1 + P_2 \\
+C_{2,1} &= P_3 + P_4 \\
+C_{2,2} &= P_5 + P_1 - P_3 - P_7
 \end{align}
 $$
 
@@ -68,20 +68,20 @@ I was skeptical at first - just one fewer multiplication? But after researching 
 
 When we apply Strassen's algorithm to 4×4 matrices, we first view them as 2×2 block matrices:
 
-$$A = \begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix}, 
-B = \begin{pmatrix} B_{11} & B_{12} \\ B_{21} & B_{22} \end{pmatrix}$$
+$$A = \begin{pmatrix} A_{1,1} & A_{1,2} \\ A_{2,1} & A_{2,2} \end{pmatrix}, 
+B = \begin{pmatrix} B_{1,1} & B_{1,2} \\ B_{2,1} & B_{2,2} \end{pmatrix}$$
 
 Each block is itself a 2×2 matrix. We compute 7 products:
 
 $$
 \begin{align}
-M_1 &= (A_{11} + A_{22})(B_{11} + B_{22}) \\
-M_2 &= (A_{21} + A_{22})B_{11} \\
-M_3 &= A_{11}(B_{12} - B_{22}) \\
-M_4 &= A_{22}(B_{21} - B_{11}) \\
-M_5 &= (A_{11} + A_{12})B_{22} \\
-M_6 &= (A_{21} - A_{11})(B_{11} + B_{12}) \\
-M_7 &= (A_{12} - A_{22})(B_{21} + B_{22})
+M_1 &= (A_{1,1} + A_{2,2})(B_{1,1} + B_{2,2}) \\
+M_2 &= (A_{2,1} + A_{2,2})B_{1,1} \\
+M_3 &= A_{1,1}(B_{1,2} - B_{2,2}) \\
+M_4 &= A_{2,2}(B_{2,1} - B_{1,1}) \\
+M_5 &= (A_{1,1} + A_{1,2})B_{2,2} \\
+M_6 &= (A_{2,1} - A_{1,1})(B_{1,1} + B_{1,2}) \\
+M_7 &= (A_{1,2} - A_{2,2})(B_{2,1} + B_{2,2})
 \end{align}
 $$
 
