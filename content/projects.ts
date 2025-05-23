@@ -15,5 +15,12 @@ export const projects = [
     image: '/projects/physicle-new.png',
     githubUrl: 'https://github.com/JamesticCS/Physicle',
     liveUrl: 'https://physicle.ca/',
+  },
+  {
+    title: 'ION-Bus Connect',
+    description: 'An interactive visualization tool that analyzes transfer opportunities between ION light rail and bus routes in Waterloo Region during peak hours.',
+    tech: ['Python', 'GTFS', 'JavaScript', 'HTML', 'GeoPandas'],
+    image: '/projects/ion-bus-connect.png',
+    githubUrl: 'https://github.com/JamesticCS/ion-bus-connect',
   }
 ]
