@@ -126,7 +126,7 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
               transition={{ delay: 1, duration: 0.8 }}
               className="text-base sm:text-lg text-gray-400"
             >
-              Software developer with a focus on mathematics and problem-solving.
+              Software developer with a focus on mathematics and problem-solving
             </motion.p>
 
             <motion.div
@@ -216,7 +216,7 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
             className="flex flex-col items-center"
           >
             <h1 className="text-center text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-3 md:mb-4">Projects</h1>
-            <p className="text-center text-gray-400 text-sm md:text-base max-w-2xl mx-auto mb-8 md:mb-12">Here are some projects I've made recently, feel free to check them out!</p>
+            <p className="text-center text-gray-400 text-sm md:text-base max-w-2xl mx-auto mb-8 md:mb-12">Here are some projects I've made, feel free to check them out!</p>
           
             <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 w-full" id="project-grid">
               {projects.map((p, index) => (

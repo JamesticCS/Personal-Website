@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Jesse Hines | Mathematics & Software Development',
-  description: 'Mathematics student at the University of Waterloo and software developer with a focus on mathematics and problem-solving.',
+  description: 'Mathematics student at the University of Waterloo and software developer with a focus on mathematics and problem-solving',
   keywords: ['Mathematics', 'Software Development', 'University of Waterloo', 'Jesse Hines', 'Programming', 'Web Development'],
   authors: [{ name: 'Jesse Hines' }],
   creator: 'Jesse Hines',
@@ -29,7 +29,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     title: 'Jesse Hines | Mathematics & Software Development',
-    description: 'Mathematics student at the University of Waterloo and software developer with a focus on mathematics and problem-solving.',
+    description: 'Mathematics student at the University of Waterloo and software developer with a focus on mathematics and problem-solving',
     siteName: 'Jesse Hines',
     images: [
       {
@@ -43,7 +43,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Jesse Hines | Mathematics & Software Development',
-    description: 'Mathematics student at the University of Waterloo and software developer with a focus on mathematics and problem-solving.',
+    description: 'Mathematics student at the University of Waterloo and software developer with a focus on mathematics and problem-solving',
     creator: '@JesseSR_',
     images: ['/profile/profile.png'],
   },
