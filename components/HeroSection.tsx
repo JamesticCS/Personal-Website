@@ -1,9 +1,10 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
-const TECH_TAGS = ['Python', 'C++', 'TypeScript', 'React', 'Next.js', 'Node.js', 'ML']
+const TECH_TAGS = ['Python', 'C++', 'TypeScript', 'Next.js', 'Node.js', 'Ruby on Rails']
 
 const SOCIAL_LINKS = [
   {
@@ -38,8 +39,20 @@ const SOCIAL_LINKS = [
 ]
 
 export default function HeroSection() {
+  const [hasScrolled, setHasScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setHasScrolled(true)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <section id="home" className="min-h-screen flex flex-col items-center justify-center gap-6 md:gap-10 py-10 md:py-20">
+    <section id="home" className="min-h-screen flex flex-col items-center justify-center gap-6 md:gap-10 py-10 md:py-20 relative">
       <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 w-full max-w-5xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -52,7 +65,7 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent"
             >
               Jesse&nbsp;Hines
             </motion.span>
@@ -101,7 +114,7 @@ export default function HeroSection() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-80 md:h-80 order-1 md:order-2 mb-4 md:mb-0"
         >
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-purple-500/20 p-1">
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-emerald-500/20 p-1">
             <div className="w-full h-full rounded-full bg-surface flex items-center justify-center overflow-hidden">
               <Image
                 src="/profile/profile.png"
@@ -117,6 +130,7 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
+      {/* Tech tags - commented out to preview without them
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -133,6 +147,31 @@ export default function HeroSection() {
           </motion.span>
         ))}
       </motion.div>
+      */}
+
+      {/* Scroll indicator - bouncing chevron */}
+      <AnimatePresence>
+        {!hasScrolled && (
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 hover:text-primary transition-colors cursor-pointer"
+            onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+            aria-label="Scroll to experience section"
+          >
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </motion.div>
+          </motion.button>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
