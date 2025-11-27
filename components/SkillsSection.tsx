@@ -25,7 +25,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
       viewport={{ once: true, margin: "-100px" }}
       className="w-full"
     >
-      <h1 className="mb-4 text-center text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent inline-block mx-auto">
+      <h1 className="mb-4 text-center text-3xl font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent inline-block mx-auto">
         Skills
       </h1>
       <p className="text-center text-gray-400 max-w-2xl mx-auto mb-12">
@@ -56,7 +56,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
                       whileInView={{ width: `${skill.level}%` }}
                       transition={{ duration: 1, delay: 0.3 }}
                       viewport={{ once: true }}
-                      className="h-full bg-gradient-to-r from-primary to-purple-400 rounded-full"
+                      className="h-full bg-gradient-to-r from-primary to-emerald-400 rounded-full"
                     />
                   </div>
                 </div>

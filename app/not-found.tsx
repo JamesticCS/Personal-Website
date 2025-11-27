@@ -12,7 +12,7 @@ export default function NotFound() {
         transition={{ duration: 0.5 }}
         className="text-center max-w-md"
       >
-        <h1 className="text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
+        <h1 className="text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent">
           404
         </h1>
         <h2 className="text-2xl font-medium mb-6 text-gray-200">Page Not Found</h2>
@@ -21,7 +21,7 @@ export default function NotFound() {
         </p>
         <Link 
           href="/"
-          className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-purple-500 text-white font-medium transition-transform hover:scale-105"
+          className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-emerald-500 text-white font-medium transition-transform hover:scale-105"
         >
           Back to Home
         </Link>

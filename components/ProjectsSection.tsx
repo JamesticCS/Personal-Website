@@ -26,7 +26,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
           viewport={{ once: true, margin: "-100px" }}
           className="flex flex-col items-center"
         >
-          <h1 className="text-center text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-3 md:mb-4">
+          <h1 className="text-center text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent mb-3 md:mb-4">
             Projects
           </h1>
           <p className="text-center text-gray-400 text-sm md:text-base max-w-2xl mx-auto mb-8 md:mb-12">

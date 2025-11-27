@@ -20,7 +20,7 @@ export default function ProjectCard({ title, description, tech, image, githubUrl
       whileHover={{ y: -4, scale: 1.02 }}
       className="flex flex-col gap-3 md:gap-4 rounded-xl bg-surface p-0 shadow-lg transition overflow-hidden border border-gray-800 h-full"
     >
-      <div className="w-full h-40 sm:h-48 relative bg-gradient-to-br from-primary/5 to-purple-400/5">
+      <div className="w-full h-40 sm:h-48 relative bg-gradient-to-br from-primary/5 to-emerald-400/5">
         {image ? (
           <Image
             src={image}
