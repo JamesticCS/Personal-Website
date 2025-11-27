@@ -9,9 +9,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0c0c0d',
-        surface: '#141417',
-        primary: '#7e5bff',
+        background: '#18181b',
+        surface: '#1f1f23',
+        primary: '#10b981',
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
