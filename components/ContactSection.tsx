@@ -28,10 +28,10 @@ export default function ContactSection() {
           className="flex flex-col items-center"
         >
           <h1 className="text-center text-3xl font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent mb-4">
-            Get In Touch
+            Contact
           </h1>
           <p className="text-center text-gray-400 max-w-md mx-auto mb-8">
-            Have a question or want to work together? The best way to reach me is by email, but you can also contact me by phone.
+            The best way to reach me is by email, but you can also contact me by phone.
           </p>
 
           <div className="bg-surface rounded-2xl p-8 shadow-xl border border-gray-800 w-full">
@@ -43,7 +43,7 @@ export default function ContactSection() {
                 </svg>
               </div>
 
-              <h3 className="text-xl font-medium text-white mb-4">Get In Touch</h3>
+              <h3 className="text-xl font-medium text-white mb-4">Contact</h3>
 
               <div className="flex flex-col items-center gap-5 max-w-md mx-auto">
                 <div className="w-full">
