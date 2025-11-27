@@ -1,29 +1,34 @@
+import createMDX from '@next/mdx'
+import remarkMath from 'remark-math'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import rehypeKatex from 'rehype-katex'
+import rehypePrism from 'rehype-prism-plus'
+
 /** @type {import('next').NextConfig} */
-// Last build update: May 10, 2025 - Force cache clear for WatPlan URL fix
-const config = {
+const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  output: 'standalone', // Change from 'export' to 'standalone' for Vercel deployment
+  output: 'standalone',
   images: {
-    domains: ['localhost'],
+    remotePatterns: [],
   },
   trailingSlash: true,
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
-  },
+  serverExternalPackages: ['sharp'],
   experimental: {
-    // Enable for improved compatibility with Vercel
-    serverComponentsExternalPackages: ['sharp']
-  }
-};
+    mdxRs: false,
+  },
+}
 
-export default config;
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [
+      remarkMath,
+      remarkFrontmatter,
+      [remarkMdxFrontmatter, { name: 'frontmatter' }],
+    ],
+    rehypePlugins: [rehypeKatex, rehypePrism],
+  },
+})
 
+export default withMDX(nextConfig)

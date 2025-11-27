@@ -1,10 +1,9 @@
-import React from 'react'
 import type { MDXComponents } from 'mdx/types'
+import type { ReactNode } from 'react'
 
-// Define custom MDX components
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // Standard elements
+    // Standard elements with custom styling
     p: (props) => <p className="my-5 text-gray-200 text-lg leading-relaxed" {...props} />,
     h1: (props) => <h1 className="text-3xl font-bold mt-10 mb-5 text-white" {...props} />,
     h2: (props) => <h2 className="text-2xl font-semibold mt-10 mb-5 text-white" {...props} />,
@@ -17,11 +16,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     em: (props) => <em className="text-gray-400 italic" {...props} />,
     strong: (props) => <strong className="font-bold text-white" {...props} />,
     blockquote: (props) => <blockquote className="border-l-4 border-primary pl-4 italic my-6 text-gray-400" {...props} />,
-    pre: ({ children, ...props }: any) => {
-      // Extract the language from className
-      const language = 
-        children?.props?.className?.replace(/language-/, '') || 'text'
-      
+    pre: ({ children, ...props }: { children?: ReactNode; className?: string }) => {
+      const childProps = children && typeof children === 'object' && 'props' in children
+        ? (children as { props?: { className?: string } }).props
+        : undefined
+      const language = childProps?.className?.replace(/language-/, '') || 'text'
+
       return (
         <div className="code-block">
           <div className="code-header">

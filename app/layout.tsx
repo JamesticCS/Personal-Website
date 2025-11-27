@@ -6,25 +6,28 @@ import '@/app/styles/responsive-large.css'
 import 'prismjs/themes/prism-tomorrow.css'
 import 'katex/dist/katex.min.css'
 import type { ReactNode } from 'react'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+}
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://jessehines.ca'),
   title: 'Jesse Hines | Mathematics & Software Development',
   description: 'Mathematics student at the University of Waterloo and software developer with a focus on mathematics and problem-solving',
   keywords: ['Mathematics', 'Software Development', 'University of Waterloo', 'Jesse Hines', 'Programming', 'Web Development'],
   authors: [{ name: 'Jesse Hines' }],
   creator: 'Jesse Hines',
   publisher: 'Jesse Hines',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

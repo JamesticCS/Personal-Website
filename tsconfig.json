@@ -15,8 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "strict": false,
-    "noImplicitAny": false,
+    "strict": true,
     "noErrorTruncation": true, 
     "forceConsistentCasingInFileNames": true,
     "paths": {

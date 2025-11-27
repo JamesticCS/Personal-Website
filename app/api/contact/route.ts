@@ -20,7 +20,7 @@ const RATE_LIMIT_CONFIG = {
 export async function POST(req: Request) {
   try {
     // Get IP for rate limiting
-    const headersList = headers()
+    const headersList = await headers()
     const ip = headersList.get('x-forwarded-for') || 'unknown'
     
     // Check rate limit
