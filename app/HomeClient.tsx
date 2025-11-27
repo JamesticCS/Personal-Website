@@ -32,8 +32,8 @@ export default function HomeClient({ projects, blogPosts }: HomeClientProps) {
   return (
     <div>
       <HeroSection />
-      <ProjectsSection projects={projects} />
       <ExperienceSection />
+      <ProjectsSection projects={projects} />
       <BlogSection posts={blogPosts} />
       <ContactSection />
     </div>

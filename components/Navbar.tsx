@@ -7,14 +7,11 @@ import { motion } from 'framer-motion'
 
 const links = [
   { href: '/#home', label: 'Home' },
-  { href: '/#projects', label: 'Projects' },
   { href: '/#experience', label: 'Experience' },
+  { href: '/#projects', label: 'Projects' },
   { href: '/#blog', label: 'Blog' },
   { href: '/#contact', label: 'Contact' },
 ]
-
-// Resume link separate from nav scroll links
-const resumeLink = { href: '/documents/resume.pdf', label: 'Resume', external: true }
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -104,7 +101,7 @@ export default function Navbar() {
                   {isActive && (
                     <motion.span
                       layoutId="activeSection"
-                      className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-purple-400"
+                      className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-emerald-400"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -113,16 +110,14 @@ export default function Navbar() {
             )
           })}
           
-          {/* Resume link (opens in new tab) */}
+          {/* Resume link (coming soon) */}
           <li>
-            <a 
-              href={resumeLink.href} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors no-underline px-1.5 md:px-2 py-1 relative text-gray-300"
+            <span
+              className="px-1.5 md:px-2 py-1 text-gray-500 cursor-not-allowed"
+              title="Resume coming soon"
             >
-              {resumeLink.label}
-            </a>
+              Resume <span className="text-xs">(Soon)</span>
+            </span>
           </li>
         </ul>
       </nav>
