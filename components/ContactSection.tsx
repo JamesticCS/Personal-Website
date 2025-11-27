@@ -18,7 +18,6 @@ const PhoneIcon = () => (
 export default function ContactSection() {
   return (
     <section id="contact" className="py-16 md:py-20 lg:py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background pointer-events-none opacity-60" />
 
       <div className="mx-auto max-w-xl px-4 lg:px-6 relative z-10">
         <motion.div
@@ -28,7 +27,7 @@ export default function ContactSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="flex flex-col items-center"
         >
-          <h1 className="text-center text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent mb-4">
+          <h1 className="text-center text-3xl font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent mb-4">
             Get In Touch
           </h1>
           <p className="text-center text-gray-400 max-w-md mx-auto mb-8">
