@@ -24,7 +24,7 @@
     "next": "^15.1.0",
     "postcss": "^8.4.49",
     "prismjs": "^1.30.0",
-    "react": "^18.2.0",
+    "react": "^19.2.4",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.67.0",
     "react-vertical-timeline-component": "^3.6.0",
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
-    "@types/react": "^18.2.48",
+    "@types/react": "^19.2.9",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.5",
     "open-cli": "^8.0.0",
